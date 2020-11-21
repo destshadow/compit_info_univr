@@ -1,2 +1,4 @@
-# compit_info_univr
-compiti di informatica univr
+# compit info univr
+Compiti di informatica univr.
+Anno 1.
+Nicolò Bompieri.
