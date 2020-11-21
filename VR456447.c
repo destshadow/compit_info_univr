@@ -1,12 +1,15 @@
 #include <stdio.h>
 
 int main(){
+    //dichiarazione delle variabili
     int numero;
-    int min = 0;
-    int max = 0;
+    int min;
+    int max;
     int sommatore = 0;
     int iterator = 0;
 
+    //inserisco il primo voto e controllo che i parametri siano corretti
+    //inizializzo il massimo e il minimo
     printf("inserisci i voti: ");
     scanf("%i", &numero);
     sommatore += numero;
@@ -16,25 +19,26 @@ int main(){
 
     if(numero < 18 || numero > 30){
         printf("\nErrore\n");
-        return 0;
+        return 0; // faccio terminare il programma se il primo numero inserito non è corretto
     }
 
     do{
         printf("inserisci i voti: ");
         scanf(" %i", &numero);
-        if(numero < 18 || numero > 30){  //rende il while superfluo
+        if(numero < 18 || numero > 30) {
             break;
         }
-        sommatore += numero;
-        if(numero > max){
+        sommatore += numero;  //sommo tutti i voti
+        if(numero > max){  //controllo il massimo
             max = numero;
         }
-        if(numero < min){
+        if(numero < min){ //controllo il minimo
             min = numero;
         }
         iterator++;
     }while(numero >= 18 && numero <= 30);
-    printf("media:%f \nmassimo:%i \nminimo:%i \nnumero di voti:%i\n",(float)sommatore / (float)iterator,max,min,iterator);
+    //print stato voti
+    printf("media:%.2f \nmassimo:%i \nminimo:%i \nnumero di voti:%i\n",(float)sommatore / (float)iterator,max,min,iterator);
 
     return 0;
 }
