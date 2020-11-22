@@ -25,7 +25,7 @@ int main(){
     do{
         printf("inserisci i voti: ");
         scanf(" %i", &numero);
-        if(numero < 18 || numero > 30) {
+        if(numero < 18 || numero > 30) { //condizione che fa finire il ciclo
             break;
         }
         sommatore += numero;  //sommo tutti i voti
@@ -36,7 +36,8 @@ int main(){
             min = numero;
         }
         iterator++;
-    }while(numero >= 18 && numero <= 30);
+    }while(1); //loop infinito
+
     //print stato voti
     printf("media:%.2f \nmassimo:%i \nminimo:%i \nnumero di voti:%i\n",(float)sommatore / (float)iterator,max,min,iterator);
 
