@@ -18,10 +18,10 @@ int main(){
     }
 
     for(int i = 0; i < DIM; i++){
-        if(array1[i] != 0 && array1[i] != 1){
+        if(array1[i] != 0 || array1[i] != 1){
             return 0;
         }
-        if(array2[i] != 0 && array2[i] != 1){
+        if(array2[i] != 0 || array2[i] != 1){
             return 0;
         }
     }
