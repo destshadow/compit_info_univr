@@ -32,14 +32,16 @@ int main(){
         if(array2[i] == 1 && array2[i] == 1){
             array3[i] = 0;
             resto++;
+        }else{
+            array3[i] = array1[i] + array2[i] + resto;
         }
-        array3[i] = array1[i] + array2[i] + resto;
+        resto = 0;
     }
 
     for(int i = 0; i < DIM; i++){
         printf("%i ", array3[i]);
     }
-    printf("resto: %i", resto);
+    printf("\nresto: %i", resto);
 
 
 
