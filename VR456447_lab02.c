@@ -29,13 +29,13 @@ int main(){
     }
 
     for(int i = DIM; i > 0; i--){
+        resto = 0;
         if(array2[i] == 1 && array2[i] == 1){
             array3[i] = 0;
             resto++;
         }else{
             array3[i] = array1[i] + array2[i] + resto;
         }
-        resto = 0;
     }
 
     for(int i = 0; i < DIM; i++){
