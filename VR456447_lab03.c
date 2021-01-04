@@ -4,7 +4,6 @@ Nel caso di inserimento di valori negativi il programma deve terminare con un me
 
 Se l'utente inserisce i valori: 1 4 5 2 1, il programma visualizzerà il seguente output:
 
-    
             *     
           * *     
           * *     
@@ -27,6 +26,10 @@ int main(){
     for(int i = 0; i < DIM; i++){
         printf("inserisci un numero: ");
         scanf(" %i", &array[i]);
+        if(array[i] < 0){
+            printf("Errore nell'insierimento, numero negativo!\n");
+            return 0;
+        }
         printf("\n");
     }
 
@@ -36,27 +39,19 @@ int main(){
             max = array[i];
         }
     }
-    //dichiarazione di una matrice con righe pari a DIM e colonne pari al massimo valore inserito nell'array
-    char matrix[DIM][max];
 
-    /*se il valore nell'array in posizione i e' minore del valore di j assegna alla matrice il carattere vuoto/spazio -> ' ',
-    se invece il valore nell'array in posizione i e' maggiore di j allora assegno il carattere asterisco -> '*' */
-    for(int i = 0; i < DIM; i++){
-        for(int j = 0; j < max; j++){
-            if(array[i] <= j){
-                matrix[i][j] = ' ';
-            }else{
-                matrix[i][j] = '*';
-            }
-        }
-    }
-    //stampa della matrice specchiata
-    for (int i = DIM-1; i >= 0; i--){
-        for (int j = 0; j < max; j++){
-            printf("%c ", matrix[j][i]);
+    //dichiarazione di una matrice con righe pari a DIM e colonne pari al massimo valore inserito nell'array
+   
+    for (int i = 0; i < max; i++){
+        for (int j = 0; j < DIM; j++){
+            if (array[j] >= max - i)
+                printf("* ");
+            else
+                printf("  ");
         }
         printf("\n");
     }
+
     //stampa dei valori nell'array
     for(int i = 0; i < DIM; i++){
         printf("%i ", array[i]);
@@ -64,3 +59,4 @@ int main(){
 
     return 0;
 }
+
