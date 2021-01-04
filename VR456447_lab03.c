@@ -13,7 +13,6 @@ Se l'utente inserisce i valori: 1 4 5 2 1, il programma visualizzerà il seguent
     
 Si ricorda che verranno considerati nel punteggio anche la presenza di commenti e la corretta indentazione.
 */
-
 #include <stdio.h>
 #define DIM 5
 
@@ -40,8 +39,7 @@ int main(){
         }
     }
 
-    //dichiarazione di una matrice con righe pari a DIM e colonne pari al massimo valore inserito nell'array
-   
+    //stampa dei valori '*' e ' '
     for (int i = 0; i < max; i++){
         for (int j = 0; j < DIM; j++){
             if (array[j] >= max - i)
