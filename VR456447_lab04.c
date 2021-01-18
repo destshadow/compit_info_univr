@@ -65,17 +65,16 @@ char TrovaMax(char matrix[][DIM]){
     int count = 1;
     int popular;
 
-    for(int i = 0; i < DIM * DIM; i++){
-        tempCount = 0;
-        temp = array[i];
-        tempCount++;
-        for (int j = i + 1; j < DIM * DIM; j++){
-            if (array[j] == temp){
-                tempCount++;
-                if (tempCount > count)
-                {
-                    popular = temp;
-                    count = tempCount;
+    for(int i = 0; i < DIM * DIM; i++){     //per tutto l'array
+        tempCount = 0;                      //counter a 0
+        temp = array[i];                    //moda = array[i]
+        tempCount++;                        //n volte comparse
+        for (int j = i + 1; j < DIM * DIM; j++){    //per tutto l'array 
+            if (array[j] == temp){          //se l'array in posizione j è uguale a temp ovvero la nostra moda temporanea
+                tempCount++;                //aumentiamo il counter di quel valore
+                if (tempCount > count){     //se il counter super il conto totale
+                    popular = temp;         //la moda diventa temp che stiamo valutando ora
+                    count = tempCount;      //count si aggiorna con il valore massimo nuovo
                 }
             }
         }
