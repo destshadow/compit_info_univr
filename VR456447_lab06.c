@@ -5,20 +5,26 @@ void Modifica(char stringa[50], char c, char output[50]){
     int i = 0;
     int j = 0;
 
-    while(stringa[i] != '\0'){
-        if(stringa[i] == c){
-            i++;
+    for(int x = 0; x < strlen(stringa); x++){
+        //printf("%c",stringa[x]);
+        if(stringa[x] == c){
+            //se la stringa supera o è uguale a questi paramentri la interrompo
+            if(stringa[x] == '\0'){
+                break;
+            }
+            if(x > strlen(stringa)){
+                break;
+            }
+            
+        }else{
+            output[j++] = stringa[x];  // faccio j++ solo quando inserisco il carattere e non sempre senno la stringa è errata
         }
-        if(i < sizeof(stringa)){
-            output[j] = stringa[i];
-        }
-        j++;
-        i++;
     }
 
-    i = 0;
+    output[j] = '\0';  // devo aggiungere il carattere di terminazione della stringa alla fine
 
-    printf("Stringa = %s; Carattere da rimuovere = %c; => ", stringa, c);
+    printf("\nStringa = %s; Carattere da rimuovere = %c; => ", stringa, c);
+
 
     while(output[i] != '\0'){
         printf("%c", output[i++]);
@@ -26,20 +32,25 @@ void Modifica(char stringa[50], char c, char output[50]){
     printf("\n");
 }
 
-// Stringa = "allocazione"; Carattere da rimuovere = 'c'; => "alloazione"
-
 int main(){
-
-    char input[50];
+    //dichiarazione delle variabili
+    char input[50] = "pazzo";
     char carattere;
     char output[50];
 
+    //input[] = "pazzo";          // non posso assegnare una stringa ad un array dopo la dichiarazione
+                                  // non supporta l'assegnamento dopo che è stato dichiaratp
+   
+
+    carattere = 'z';
+    Modifica(input, carattere, output);
+
     printf("Inserisci frase da modificare: ");
     scanf(" %s", input);
-
+    //assegnamento variabili
     printf("\nInserisci carattere da togliere: ");
     scanf(" %c", &carattere);
-    
+
     Modifica(input, carattere, output);
 
     return 0;
