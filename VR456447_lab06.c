@@ -46,7 +46,7 @@ int main(){
     Modifica(input, carattere, output);
 
     printf("Inserisci frase da modificare: ");
-    scanf(" %s", input);
+    scanf(" %50s", input);
     //assegnamento variabili
     printf("\nInserisci carattere da togliere: ");
     scanf(" %c", &carattere);
