@@ -4,19 +4,23 @@
 #define PROVA 5
 #define N 50
 
+//creo struttura di tipo stringa
 struct string {
     char stringa[STRING_S + STRING_S];
 };
 
+//definisco struct string come stringt_
 typedef struct string stringt_;
 
+//creo la struttura My_String
 struct My_String{
     stringt_ My_String[PROVA];
 };
 
+//definisco struct My_String come My_String_t
 typedef struct My_String My_String_t;
 
-
+//creo la funzione My_atoi simile ad atoi nella libreria
 int My_atoi(char *str){
     int res = 0;
 
@@ -27,8 +31,7 @@ int My_atoi(char *str){
     return res;
 }
 
-
-
+//creo la funzione per inserire dati nell'array
 void Rimepi(My_String_t *array){
 
     for(int i = 0; i < PROVA; i++){
@@ -37,6 +40,7 @@ void Rimepi(My_String_t *array){
 
 }
 
+//creao una funzione che copia le stringhe da una parte all'altra
 void string_cp(char dest[], char src[]){
     int i = 0;
     do{
@@ -44,6 +48,7 @@ void string_cp(char dest[], char src[]){
     }while(src[i++] != '\0');
 }
 
+//creo la funzione che controlla il carattere e vedere se è un tipo valido se è 0 o > N è errato
 void Sostituisci(My_String_t *array){
     int a;
     for(int i = 0; i < PROVA; i++){
@@ -70,6 +75,7 @@ void Sostituisci(My_String_t *array){
     }
 }
 
+//funzione per stampare l'array
 void Stampa(My_String_t *array){
     for(int i = 0; i < PROVA; i++){
         printf("%s ", array->My_String[i].stringa);
@@ -77,8 +83,10 @@ void Stampa(My_String_t *array){
 }
 
 int main(){
+    //creo variabile puntatore array di tipo My_string_t
     My_String_t *array;
 
+    //richiamo funzioni principali
     Rimepi(array);
     Sostituisci(array);
     Stampa(array);
