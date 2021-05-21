@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 #define STRING_S 5
-#define PROVA 50
+#define PROVA 5
 #define N 50
 
 struct string {
@@ -16,6 +15,17 @@ struct My_String{
 };
 
 typedef struct My_String My_String_t;
+
+
+int My_atoi(char *str){
+    int res = 0;
+
+    for (int i = 0; str[i] != '\0'; ++i){
+        res = res * 10 + str[i] - '0';
+    }
+
+    return res;
+}
 
 
 
@@ -37,11 +47,12 @@ void string_cp(char dest[], char src[]){
 void Sostituisci(My_String_t *array){
     int a;
     for(int i = 0; i < PROVA; i++){
-        a = atoi(array->My_String[i].stringa);
+        //a = atoi(array->My_String[i].stringa);
+        a = My_atoi(array->My_String[i].stringa);
         //printf("%i, ", a);  debug
         if(a == 0 || a > N){
             printf("\nERRORE\n");
-            exit(-1);
+            //exit(-1);
         }
         if(a % 3 == 0){
             //array->My_String[i].stringa = "CIP\0";
