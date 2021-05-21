@@ -1,0 +1,306 @@
+void Stoi(string *arrayS[], int *array[]){
+    for(int i = 0; i < AR_SIZE; i++){
+        for(int j = 0; j < lenght(arrayS[i]->stringa); j++){
+            switch (arrayS[i]->stringa[j]){
+                case 1:
+                    
+                    if(sizeof(arrayS[i]->stringa) >= 2){
+                        if(j == 0){
+                            array[i] = 1 * 10;
+                        }else{
+                            array[i] = 1;
+                        }
+                    }
+                break;
+                case 2:
+                    
+                    if(sizeof(arrayS[i]->stringa) >= 2){
+                        if(j == 0){
+                            array[i] = 2 * 10;
+                        }else{
+                            array[i] = 2;
+                        }
+                    }
+
+                break;
+                case 3:
+                    
+                    if(sizeof(arrayS[i]->stringa) >= 2){
+                        if(j == 0){
+                            array[i] = 3 * 10;
+                        }else{
+                            array[i] = 3;
+                        }
+                    }
+
+                break;
+                case 4:
+                    
+                    if(sizeof(arrayS[i]->stringa) >= 2){
+                        if(j == 0){
+                            array[i] = 4 * 10;
+                        }else{
+                            array[i] = 4;
+                        }
+                    }
+
+                break;
+                case 5:
+                    
+                    if(sizeof(arrayS[i]->stringa) >= 2){
+                        if(j == 0){
+                            array[i] = 5 * 10;
+                        }else{
+                            array[i] = 5;
+                        }
+                    }
+
+                break;
+                case 6:
+                    
+                    if(sizeof(arrayS[i]->stringa) >= 2){
+                        if(j == 0){
+                            array[i] = 6 * 10;
+                        }else{
+                            array[i] = 6;
+                        }
+                    }
+
+                break;
+                case 7:
+                    
+                    if(sizeof(arrayS[i]->stringa) >= 2){
+                        if(j == 0){
+                            array[i] = 7 * 10;
+                        }else{
+                            array[i] = 7;
+                        }
+                    }
+
+                break;
+                case 8:
+                    
+                    if(sizeof(arrayS[i]->stringa) >= 2){
+                        if(j == 0){
+                            array[i] = 8 * 10;
+                        }else{
+                            array[i] = 8;
+                        }
+                    }
+
+                break;
+                case 9:
+                    
+                    if(sizeof(arrayS[i]->stringa) >= 2){
+                        if(j == 0){
+                            array[i] = 9 * 10;
+                        }else{
+                            array[i] = 9;
+                        }
+                    }
+
+                break;
+                default:
+                    printf("ERRORE!!\n");
+                break;
+            }
+        }
+    }
+}
+
+
+for(int i = 0; i < AR_SIZE; i++){
+    int a = lenght(array[i].stringa);
+    for(int j = 0; j < lenght(array[i].stringa); j++){
+        if(a >= 2){
+            array_values[i]  = array_values[i]  + array[i].stringa[j] * 10;
+        }else{
+            array_values[i]  = array_values[i]  + array[i].stringa[j];
+        }
+        a --;
+    }
+}
+
+
+char *my_strcpy(char *dest, char *src){
+    char *start = dest;
+    
+    while(*src != "\0"){
+        *dest = *src;
+        dest++;
+        src++;
+    }
+
+    *dest = "\0";
+    return start;
+}
+
+
+int lenght(char s[]){
+    int i = 0;
+    while(s[i] != '\0'){
+        i++;
+    }
+    return i;
+}
+
+// codice vecchi
+#include <stdio.h>
+#include <stdlib.h>
+
+
+#define AR_SIZE 5
+#define N 20
+
+struct string {
+    char stringa[50];
+    int size_attuale;
+};
+
+typedef struct string stringt_;
+
+//implementazione funzione strcpy
+/*char *my_strcpy(char *dest, char *src){
+    char *start = dest;
+    
+    while(*src != "\0"){
+        *dest = *src;
+        dest++;
+        src++;
+    }
+
+    *dest = "\0";
+    return start;
+}*/
+
+
+int lenght(char s[]){
+    int i = 0;
+    while(s[i] != '\0'){
+        i++;
+    }
+    return i;
+}
+
+void my_strcpy(char dest[], char src[]){
+	size_t i = 0;	
+	size_t j = 0;	
+	while(src[i] != '\0'){						//sorgente;
+		i++;		
+	}
+
+	while(dest[j] != '\0'){						//destinazione;
+		j++;		
+	}
+
+    printf("\ncapacita sorgente : %i \n", i);
+    printf("\ncapacita destinazione : %i \n", j);
+
+	if ( i <= j){
+        
+		for ( size_t x = 0; x < j; x++){
+			dest[x] = src[x];
+		}
+
+		/*for (size_t x = 0; x < j; x++){
+			cout<<dest[x];
+		}
+		
+		for (size_t x = 0; x < j; x++){
+			cout<<src[x];
+		}*/
+	}else{      //i > j
+		printf("error, out of memory!");
+        
+	}
+}
+	
+
+void Rimepi(stringt_ str[]){
+    /*for(int i = 0; i < AR_SIZE; i++){ 
+            for(int j = 0; j < 50; j++){    
+            scanf("%c", str[i].stringa[j]);      //giusto ma la dimensione è ristretta
+            
+
+            if(lenght(str[i].stringa) == 1){
+                printf("\nok\n");
+            }
+        }
+    }*/
+    int i = 0;
+    int j = 0;
+    while(i < AR_SIZE){
+        if(getchar() != "\n"){
+            str[i].stringa[j] = getchar();
+        }
+        i++;
+        j++;
+        str[i].size_attuale = j;
+    }
+
+    int a = str[i].size_attuale;
+
+    if(str[i].size_attuale == 1 || str[i].size_attuale == 2){
+        do{
+            str[i].stringa[a++] = "";
+        }while(a != 7);
+        
+    }
+    str[i].stringa[j] = '\0';
+}
+
+void Sostituisci(stringt_ array[], int array_values[]){
+    for(int i = 0; i < AR_SIZE; i++){
+        array_values[i] = atoi(array[i].stringa);
+    }
+
+    for(int i = 0; i < AR_SIZE; i++){
+        if(array_values[i] % 3 == 0){
+            my_strcpy(array[i].stringa, "CIP\0");
+        }
+        if(array_values[i] % 7 == 0){
+            my_strcpy(array[i].stringa, "CIOP\0");
+        }
+
+        if((array_values[i] % 7 == 0) && (array_values[i] % 3 == 0)){
+            my_strcpy(array[i].stringa, "CIPCIOP\0");
+        }
+    }
+}
+
+void Stampa(stringt_ array[], int array_values[]){
+    for(int i = 0; i < AR_SIZE; i++){
+        printf("%s, ", array[i].stringa);
+    }
+
+    printf("\n");
+
+    for(int i = 0; i < AR_SIZE; i++){
+        printf("%i, ", array_values[i]);
+    }
+}
+
+int main(){
+
+    //array dis tringhe
+    stringt_ array[AR_SIZE];
+
+    /*for(int i = 0; i < AR_SIZE; i++){
+        array[i].stringa[50] = "\0";
+    }*/
+
+    //array buffer
+    int array_values[AR_SIZE];
+
+    //sottoprogramma 1 in cui riempio l'array di stringhe
+    Rimepi(array);
+
+    //sottoprogramma 2 in cui esegue le op richieste
+    //Sostituisci(array, array_values);
+
+
+    //sottoprogramma 3 in cui stampo i valori
+    Stampa(array, array_values);
+
+    return 0;
+}
