@@ -10,20 +10,23 @@ struct Auto{
 
 typedef struct Auto Auto_t;
 
-Auto_t *Pesa(Auto_t *s,float valore){
+Auto_t *Pesa(Auto_t *s,float valore){           //Inserisci in coda
     static int pesate_avvenute = 0;
     Auto_t *prec;
     Auto_t *tmp;
 
+    prec = (Auto_t*)malloc(sizeof(Auto_t*));
     tmp = (Auto_t*)malloc(sizeof(Auto_t*));
     if(tmp != NULL && pesate_avvenute <= PESATE_MAX){
         tmp->next = NULL;
         tmp->peso = valore;
         if( s == NULL){
             s = tmp;                //se la lista è al primo valore (NULL) gli assegno tmp ovvero il nuovo primo valore
+            pesate_avvenute++;
         }else{
             for(prec = s; prec->next != NULL; prec=prec->next){     //raggiungo il penultimo valore e assegno al valore dopo tmp;
                 prec->next = tmp;
+                pesate_avvenute++;
             }
         }
     }else{
@@ -33,11 +36,11 @@ Auto_t *Pesa(Auto_t *s,float valore){
 }
 
 void Storico(Auto_t *s){
-    while (s != NULL){
+    if (s != NULL){
         printf("%.2lf Kili\n", s->peso);
-        s = s->next;
+        Storico(s->next);
     }
-    //printf("\n");
+    
 }
 
 void Menu(){
@@ -60,7 +63,7 @@ int main(){
             case 1:
                     printf("\nPesa cosa? (1 = gomma, 2 = paraurti, 3 = specchietto)\n");
                     scanf("%i", &opzione2);
-                    switch (opzione){
+                    switch (opzione2){
                         case 1:
                             valore = 1;
                         break;
