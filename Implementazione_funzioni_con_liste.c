@@ -7,6 +7,11 @@ struct elem_{
   struct elem_ *next;
 };
 
+struct node_t {
+    char value;
+    struct node_t *next;
+};
+
 typedef struct elem_ elem;
 
 /*prototipi delle funzioni*/
@@ -18,8 +23,6 @@ void visualizza(elem*);
 elem* distruggiLista(elem*);
 int esisteElemento(elem*, int);
 int massimoLista(elem*);
-
-
 
 /*inserisce un nuovo numero in coda alla lista*/
 elem* inserisciInCoda(elem* lista, int num){
@@ -156,6 +159,43 @@ int massimoLista(elem* lista){
 	}
 	return x;
 }
+
+
+//nuovo
+struct node_t *create_node(char value) {
+    struct node_t *new = (struct node_t *)malloc(sizeof(struct node_t));
+
+    if (new == NULL){
+		printf("Memory allocation failed\n");
+		exit(EXIT_FAILURE);
+	}
+	
+    new->value = value;
+    new->next = NULL;
+    return new;
+}
+
+
+
+struct node_t *create_list(const char *s) {
+    struct node_t *head = NULL;
+    struct node_t *prev;
+
+    while (*s) {
+        struct node_t *new = create_node(*s);
+
+        if (head == NULL) {
+            head = new;
+        } else {
+            prev->next = new;
+        }
+        prev = new;
+        s++;
+    }
+    return head;
+}
+//end nuovo
+
 
 
 int main(int argc, char* argv[]){
