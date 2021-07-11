@@ -12,6 +12,11 @@ struct node_t {
     struct node_t *next;
 };
 
+struct letter_t {
+    char letter;
+    struct letter_t *next;
+};
+
 typedef struct elem_ elem;
 
 /*prototipi delle funzioni*/
@@ -26,34 +31,40 @@ int massimoLista(elem*);
 
 /*inserisce un nuovo numero in coda alla lista*/
 elem* inserisciInCoda(elem* lista, int num){
-  elem *prec;
-  elem *tmp;
+  elem *prec; //puntatore a tipo elem prec
+  elem *tmp;  //puntatore a tipo elem tmp
 
-  tmp = (elem*) malloc(sizeof(elem));
-	if(tmp != NULL){
-		tmp->next = NULL;
-		tmp->num = num;
-		if(lista == NULL){
-			lista = tmp;
-		}else{
+  tmp = (elem*) malloc(sizeof(elem)); //alloco lo spazio per un nuovo elemento e lo salvo su tmp
+	if(tmp != NULL){                    //se timp e diverso da null quindi l'allocazione di un nuovo elemento è andato a buon fine
+		tmp->next = NULL;                 //il prossimo sarà null
+		tmp->num = num;                   //gli do il valore attuale passatomi dalla funzione
+		if(lista == NULL){                //se la lista è vuota
+			lista = tmp;                    //la lista attuale(NULL) diventa tmp quindi come ultimo valore ha tmp
+		}else{                            //altrimenti  (quindi ci sono elementi dentro)
 		/*raggiungi il termine della lista*/
-		for(prec=lista;prec->next!=NULL;prec=prec->next);
-		prec->next = tmp;
+		for(prec=lista;prec->next!=NULL;prec=prec->next);   //assegno a prec la lista attuale(così scalo prec e non lista), se il prossimo di prec è diverso da null, scalo avanti
+		  prec->next = tmp;                                   //per ogni iterazione successiva fino ad arrivare a null assegno a prec->next tmp
 		}
+    /*
+      while(prev->next){     
+            prev = prev->next;
+        }
+        prev->next = tmp;
+    */
 	}else
-      printf("Memoria esaurita!\n");
-  return lista;
+      printf("Memoria esaurita!\n");  //se tmp non è allocato ho finito la memoria
+  return lista;                       //ritorno la lista con l'ultimo elemento assegnato
 }
 
 /*inserisce un nuovo numero in testa alla lista*/
 elem* inserisciInTesta(elem* lista, int num){
-  elem *tmp;
+  elem *tmp;                            //creo un puntatore tmp di elem
 
-  tmp = (elem*) malloc(sizeof(elem));
-  if(tmp != NULL){
-    tmp->num = num;
-    tmp->next = lista;
-    lista = tmp;    
+  tmp = (elem*) malloc(sizeof(elem));   //alloco tmp con un nuovo spazio di elem
+  if(tmp != NULL){                      //se l'allocamento è andato a buon fine
+    tmp->num = num;                     //il valore di tmp è num
+    tmp->next = lista;                  //il prossimo di tmp è la lista
+    lista = tmp;                        //l'intera lista ora è tmp
   } else
       printf("Memoria esaurita!\n");
   return lista;
@@ -176,14 +187,16 @@ struct node_t *create_node(char value) {
 }
 
 
-
+//creo una struttura con le stringhe
 struct node_t *create_list(const char *s) {
     struct node_t *head = NULL;
     struct node_t *prev;
 
     while (*s) {
         struct node_t *new = create_node(*s);
-
+        //struct node_t *new = (struct node_t *) malloc(sizeof(struct node_t)); è la riga sopra ma fatta in una riga
+        //new->value = *s;
+        //new->next = NULL;
         if (head == NULL) {
             head = new;
         } else {
@@ -194,7 +207,31 @@ struct node_t *create_list(const char *s) {
     }
     return head;
 }
+//stampa caratteri di un array di strutture
+void print_phrase(struct letter_t *phrase[], int length, char sep) {
+    
+    for(int i = 0; i < length; i++){
+        struct letter_t *current = phrase[i];
+        
+        while (current){
+            printf("%c", current->letter);
+            current = current->next;
+        }
+        printf("%c", sep);
+    }
+}
+//creazione lista ricorsvia a = const(1,cost(2,const(3,const(NULL))));
+elem *ConstructList(int head, elem *tail){
+    elem *this = (elem *) malloc(sizeof(elem));
+    this->num = head;
+    this->next = tail;
+
+    return this;
+}
+
+
 //end nuovo
+
 
 
 
