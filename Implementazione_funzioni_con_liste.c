@@ -261,3 +261,128 @@ int main(int argc, char* argv[]){
 
   return 0;
 }
+
+
+/*
+
+Si completi il file ESA 13072021 A 1.c scrivendo le funzioni:
+• colonna(conta) che data una matrice rettangolare 7x6 composta di soli numeri 0 e 1 restituisce l’indice della
+prima colonna con la pi`u lunga sequenza di valori 1 consecutivi, −1 se nella matrice non sono presenti
+valori 1.
+• percorso che data una matrice rettangolare 7x6 composta di soli numeri 0 e 1 verifica se esiste una
+sequenza di elementi di valore 1 adiacenti tali che si possa individuare un percorso sulla matrice dalla
+prima all’ultima riga, spostandosi sempre da un elemento di valore 1 ad un altro adiacente, senza mai
+tornare su righe gi`a percorse in precedenza (la funzione restituisce 1 se il percorso esiste, 0 altrimenti).
+La funzione percorso sar`a valutata con un punteggio maggiore, se implementata in modo ricorsivo.
+Ad esempio, se la matrice in ingresso fosse la seguente, colonna restituirebbe come indice di colonna 1 (la
+colonna di indice 1 ha 4 valori 1 consecutivi e la risposta di percorso sarebbe 1 (infatti esiste anche pi`u di un
+percorso di 1 adiacenti dalla prima all’ultima riga – uno di questi `e stato evidenziato in grassetto):
+
+0 1 0 0 0 0
+0 0 1 0 0 0
+0 1 1 0 0 0
+0 1 1 0 0 0
+1 1 1 0 0 0
+1 1 0 0 0 0
+1 0 0 0 0 0
+
+Se la matrice in ingresso fosse invece la seguente, colonna restituirebbe come indice di colonna 2 e la risposta
+di percorso sarebbe 0 (nella seconda riga non esiste un 1 adiacente all’unico 1 della prima riga):
+
+0 1 0 0 0 0
+0 0 0 1 0 0
+0 1 1 0 0 0
+0 1 1 0 0 0
+1 1 1 0 0 0
+1 1 1 0 0 0
+1 0 1 0 0 0
+
+
+
+//prototipi
+int conta(int mat[][COL]);
+int percorso(int mat[][COL], int, int);
+
+
+
+int main(void) {
+  int i, M[RIGHE][COL]={{0,1,0,0,0,0},{0,0,1,0,0,0},{0,1,1,0,0,0},{0,1,1,0,0,0},{1,1,1,0,0,0},{1,1,0,0,0,0},{1,0,0,0,0,0}};
+  int N[RIGHE][COL]={{0,1,0,0,0,0},{0,0,0,1,0,0},{0,1,1,0,0,0},{0,1,1,0,0,0},{1,1,1,0,0,0},{1,1,1,0,0,0},{1,0,1,0,0,0}};
+  int c;
+  c=conta(M);
+  printf("\n Indice di colonna con maggior numero di 1 consecutivi: %d\n", c);
+  i=0;
+  while (i<COL && !percorso(M, 0, i))
+    i++;
+  if (i==COL)
+    printf("Il percorso NON esiste.\n");
+  else
+    printf("Il percorso esiste.\n");
+  
+  c=conta(N);
+  printf("\n Indice di colonna con maggior numero di 1 consecutivi: %d\n ", c);
+  i=0;
+  while (i<COL && !percorso(N, 0, i))
+    i++;
+  if (i==COL)
+    printf("Il percorso NON esiste.\n");
+  else
+    printf("Il percorso esiste.\n");
+  return(0); 
+  
+  
+  return(0);
+  
+}
+
+// la funzione restituisce l'indice della prima colonna con il maggior numero di 1 consecutivi, -1 se non esiste 
+
+int conta(int mat[RIGHE][COL]){
+	int i,j,maxval,max_c;
+	int val;
+	maxval=0;
+	max_c=-1;
+	for(i=0;i<COL;i++)
+	{	
+		j=0;
+		val=0;
+		while(j<RIGHE){
+			while(mat[j][i]==1 && j<RIGHE){
+				val++;
+				j++;
+			}
+			if(val>maxval){
+				maxval=val;
+				max_c=i;
+			}
+			val=0;
+			j++;
+		}
+	}
+				
+	return max_c;		
+}
+
+
+// la funzione restituisce 1 se un percorso di 1 adiacenti esiste a partire dalla riga i colonna j 
+int percorso(int mat[RIGHE][COL], int i, int j) {
+    int risp;
+
+    if (mat[i][j] == 1) {
+      if (i==RIGHE-1) {
+        risp = 1;
+      } else {
+        if ((j>0 && percorso(mat, i+1, j-1)) || percorso(mat, i+1, j) || (j<COL-1 && percorso(mat, i+1, j+1)))
+          risp = 1;
+        else
+          risp = 0;
+      }
+    } 
+	else 
+ 		 risp = 0;
+    
+    return(risp);
+}
+
+
+*/
